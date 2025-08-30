@@ -1,0 +1,27 @@
+# Docker Compose for Local Development
+# Railway handles deployment automatically
+
+version: '3.8'
+
+services:
+  # FastAPI Application for Local Development
+  app:
+    build: .
+    container_name: loan_approval_app
+    environment:
+      ENVIRONMENT: development
+      MIN_SALARY: 30000
+      MIN_CREDIT_SCORE: 600
+      MAX_DEBT_TO_INCOME_RATIO: 0.4
+      LOW_RISK_THRESHOLD: 0.8
+      HIGH_RISK_THRESHOLD: 0.4
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models
+      - ./data:/app/data
+    command: >
+      sh -c "
+        python deploy_setup.py &&
+        uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+      "

@@ -1,0 +1,150 @@
+{
+  "random_forest": {
+    "metrics": {
+      "accuracy": 0.872,
+      "precision": 0.8353067534815726,
+      "recall": 0.872,
+      "f1_score": 0.8444393558608433,
+      "roc_auc": 0.8647253015362145,
+      "cv_mean": 0.8378372990311446,
+      "cv_std": 0.00492926324523088,
+      "confusion_matrix": [
+        [
+          1698,
+          46,
+          1
+        ],
+        [
+          197,
+          34,
+          3
+        ],
+        [
+          7,
+          2,
+          12
+        ]
+      ],
+      "classification_report": {
+        "approved": {
+          "precision": 0.8927444794952681,
+          "recall": 0.9730659025787965,
+          "f1-score": 0.9311763092953113,
+          "support": 1745.0
+        },
+        "manual_review": {
+          "precision": 0.4146341463414634,
+          "recall": 0.1452991452991453,
+          "f1-score": 0.21518987341772153,
+          "support": 234.0
+        },
+        "rejected": {
+          "precision": 0.75,
+          "recall": 0.5714285714285714,
+          "f1-score": 0.6486486486486487,
+          "support": 21.0
+        },
+        "accuracy": 0.872,
+        "macro avg": {
+          "precision": 0.6857928752789105,
+          "recall": 0.5632645397688377,
+          "f1-score": 0.5983382771205604,
+          "support": 2000.0
+        },
+        "weighted avg": {
+          "precision": 0.8353067534815726,
+          "recall": 0.872,
+          "f1-score": 0.8444393558608433,
+          "support": 2000.0
+        }
+      }
+    },
+    "feature_importance": {
+      "credit_score": 0.16975551923372448,
+      "repayment_history": 0.12795439662812227,
+      "monthly_income": 0.11596210247007765,
+      "salary": 0.11400859997069154,
+      "loan_to_income_ratio": 0.1104655628007816,
+      "loan_amount": 0.10299301836699365,
+      "employment_years": 0.09368618642976151,
+      "age": 0.06754420684689923,
+      "debt_to_income_ratio": 0.060407163955860536,
+      "existing_loans": 0.019395257230750976,
+      "debt_burden": 0.017827986066336576
+    }
+  },
+  "logistic_regression": {
+    "metrics": {
+      "accuracy": 0.874,
+      "precision": 0.8317998463311563,
+      "recall": 0.874,
+      "f1_score": 0.8420025256928483,
+      "roc_auc": 0.8701974260249126,
+      "cv_mean": 0.8474673639212893,
+      "cv_std": 0.005475275179824163,
+      "confusion_matrix": [
+        [
+          1715,
+          30,
+          0
+        ],
+        [
+          203,
+          29,
+          2
+        ],
+        [
+          0,
+          17,
+          4
+        ]
+      ],
+      "classification_report": {
+        "approved": {
+          "precision": 0.8941605839416058,
+          "recall": 0.9828080229226361,
+          "f1-score": 0.9363909363909364,
+          "support": 1745.0
+        },
+        "manual_review": {
+          "precision": 0.3815789473684211,
+          "recall": 0.12393162393162394,
+          "f1-score": 0.1870967741935484,
+          "support": 234.0
+        },
+        "rejected": {
+          "precision": 0.6666666666666666,
+          "recall": 0.19047619047619047,
+          "f1-score": 0.2962962962962963,
+          "support": 21.0
+        },
+        "accuracy": 0.874,
+        "macro avg": {
+          "precision": 0.6474687326588978,
+          "recall": 0.4324052791101502,
+          "f1-score": 0.473261335626927,
+          "support": 2000.0
+        },
+        "weighted avg": {
+          "precision": 0.8317998463311563,
+          "recall": 0.874,
+          "f1-score": 0.8420025256928483,
+          "support": 2000.0
+        }
+      }
+    },
+    "feature_importance": {
+      "monthly_income": 2.0921760193745667,
+      "loan_amount": 1.4042766317049642,
+      "credit_score": 1.0148655796804544,
+      "salary": 0.7046589144403822,
+      "employment_years": 0.682257693188303,
+      "repayment_history": 0.37841001799940205,
+      "age": 0.32685354083609436,
+      "loan_to_income_ratio": 0.15725207541168906,
+      "debt_to_income_ratio": 0.15634285087454478,
+      "debt_burden": 0.11033983671471892,
+      "existing_loans": 0.11033983671468757
+    }
+  }
+}

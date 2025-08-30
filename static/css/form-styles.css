@@ -1,0 +1,868 @@
+/* Form-specific styles for the loan application */
+
+.loan-form {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-section {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.form-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.section-title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 3px solid transparent;
+    border-image: var(--gradient-primary) 1;
+    display: inline-block;
+    letter-spacing: -0.025em;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: var(--surface-elevated);
+    color: var(--text-primary);
+    font-weight: 500;
+    box-shadow: var(--shadow-sm);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15), var(--shadow-md);
+    transform: translateY(-1px);
+    background: white;
+}
+
+.form-input:invalid {
+    border-color: var(--error-color);
+}
+
+.form-input.error {
+    border-color: var(--error-color);
+    background-color: #fef2f2;
+}
+
+.form-input.success {
+    border-color: var(--success-color);
+    background-color: #f0fdf4;
+}
+
+.error-message {
+    display: block;
+    color: var(--error-color);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    min-height: 1.25rem;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 120px;
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: var(--shadow-md);
+    font-weight: 600;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+}
+
+.btn-primary:hover:not(:disabled)::before {
+    left: 100%;
+}
+
+.btn-primary:disabled {
+    background-color: var(--secondary-color);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--background-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-loader {
+    display: none;
+}
+
+.btn.loading .btn-text {
+    display: none;
+}
+
+.btn.loading .btn-loader {
+    display: inline-block;
+}
+
+/* Form validation styles */
+.form-group.has-error .form-input {
+    border-color: var(--error-color);
+    background-color: #fef2f2;
+}
+
+.form-group.has-success .form-input {
+    border-color: var(--success-color);
+    background-color: #f0fdf4;
+}
+
+/* Input hints and help text */
+.form-hint {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+}
+
+.form-help {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+    font-style: italic;
+}
+
+/* Custom number input styling */
+.form-input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.form-input[type="number"]::-webkit-outer-spin-button,
+.form-input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Focus indicators for accessibility */
+.form-input:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Form progress indicator */
+.form-progress {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+}
+
+.progress-step {
+    display: flex;
+    align-items: center;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.progress-step.active {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.progress-step.completed {
+    color: var(--success-color);
+}
+
+/* Responsive form design */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .loan-form {
+        padding: 0;
+    }
+    
+    .form-section {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.125rem;
+    }
+    
+    .form-input {
+        padding: 0.625rem;
+    }
+}/* Modern
+ Form Enhancements */
+.form-group {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.form-label {
+    display: block;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.form-label::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    transition: width 0.3s ease;
+}
+
+.form-group:focus-within .form-label::after {
+    width: 100%;
+}
+
+.form-input::placeholder {
+    color: rgba(203, 213, 225, 0.5);
+    transition: all 0.3s ease;
+}
+
+.form-input:focus::placeholder {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+/* Enhanced Button Styles */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 120px;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--background-color);
+    border-color: var(--secondary-color);
+}
+
+.form-section {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.form-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* Enhanced Error States */
+.form-input.error {
+    border-color: var(--error-color);
+    background: rgba(239, 68, 68, 0.1);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    animation: shake 0.5s ease-in-out;
+}
+
+.form-input.success {
+    border-color: var(--success-color);
+    background: rgba(16, 185, 129, 0.1);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.error-message {
+    display: block;
+    color: var(--error-light);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    min-height: 1.25rem;
+    font-weight: 500;
+    animation: fadeInUp 0.3s ease-out;
+}
+
+/* Loading Button State */
+.btn.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.btn.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Form Actions Enhancement */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(71, 85, 105, 0.3);
+    background: rgba(71, 85, 105, 0.05);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-left: -2rem;
+    margin-right: -2rem;
+    margin-bottom: -2rem;
+}
+
+/* Removed duplicate select styling */
+
+/* Mobile Enhancements */
+@media (max-width: 768px) {
+    .form-section {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .btn {
+        width: 100%;
+        padding: 1rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}/* Enh
+anced Modern Form Styles */
+.form-section {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid var(--border-light);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.form-section:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-color);
+}
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.025em;
+}
+
+.form-group {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+/* Enhanced Button Styling */
+.btn {
+    padding: 1rem 2rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    min-width: 140px;
+}
+
+/* Enhanced Primary Button */
+.btn-primary {
+    background: var(--gradient-primary) !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: var(--shadow-md) !important;
+    font-weight: 600 !important;
+}
+
+.btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-xl) !important;
+}
+
+/* Enhanced Secondary Button */
+.btn-secondary {
+    background: var(--surface-elevated) !important;
+    color: var(--text-primary) !important;
+    border: 2px solid var(--border-color) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.btn-secondary:hover {
+    background: var(--surface-color) !important;
+    border-color: var(--primary-color) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+/* Form Actions Enhancement */
+.form-actions {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    margin-top: 2rem;
+    border-top: none;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Enhanced Select Dropdown Styling */
+select.form-input {
+    background: white;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1rem 3rem 1rem 1.25rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    width: 100%;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%234f46e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+    background-position: right 1rem center;
+    background-repeat: no-repeat;
+    background-size: 1.2em;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+select.form-input:hover {
+    border-color: var(--primary-light);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+select.form-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15), var(--shadow-md);
+    background: white;
+    transform: translateY(-1px);
+}
+
+select.form-input option {
+    background: white;
+    color: var(--text-primary);
+    padding: 0.75rem;
+    font-weight: 500;
+    border: none;
+}
+
+select.form-input option:hover {
+    background: rgba(79, 70, 229, 0.1);
+    color: var(--primary-color);
+}
+
+select.form-input option:checked {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Enhanced Error States */
+.form-input.error {
+    border-color: var(--error-color) !important;
+    background: rgba(239, 68, 68, 0.05) !important;
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1) !important;
+}
+
+.form-input.success {
+    border-color: var(--success-color) !important;
+    background: rgba(5, 150, 105, 0.05) !important;
+    box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.1) !important;
+}
+
+.error-message {
+    color: var(--error-color);
+    font-weight: 500;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .form-section {
+        padding: 1.5rem;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}
+
+/* Consolidated Select Styling - Duplicates removed, all styling handled by enhanced select.form-input rules above */
+/*
+ Specific Tenure Dropdown Enhancements */
+#preferred_tenure_years {
+    background: white !important;
+    border: 2px solid var(--border-color) !important;
+    border-radius: var(--border-radius) !important;
+    padding: 1rem 3rem 1rem 1.25rem !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    color: var(--text-primary) !important;
+    width: 100% !important;
+    cursor: pointer !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%234f46e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3E%3C/svg%3E") !important;
+    background-position: right 1rem center !important;
+    background-repeat: no-repeat !important;
+    background-size: 1.2em !important;
+    transition: all 0.3s ease !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+#preferred_tenure_years:hover {
+    border-color: var(--primary-light) !important;
+    box-shadow: var(--shadow-md) !important;
+    transform: translateY(-1px) !important;
+}
+
+#preferred_tenure_years:focus {
+    outline: none !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15), var(--shadow-md) !important;
+    background: white !important;
+    transform: translateY(-1px) !important;
+}
+
+#preferred_tenure_years option {
+    background: white !important;
+    color: var(--text-primary) !important;
+    padding: 0.75rem !important;
+    font-weight: 500 !important;
+    border: none !important;
+}
+
+/* Cross-browser compatibility for select dropdown */
+@supports (-webkit-appearance: none) {
+    #preferred_tenure_years {
+        -webkit-appearance: none !important;
+    }
+}
+
+@supports (-moz-appearance: none) {
+    #preferred_tenure_years {
+        -moz-appearance: none !important;
+    }
+}
+
+/* Firefox specific fixes */
+@-moz-document url-prefix() {
+    #preferred_tenure_years {
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%234f46e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3E%3C/svg%3E") !important;
+        text-indent: 0.01px !important;
+        text-overflow: '' !important;
+    }
+}
+
+/* Safari specific fixes */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    #preferred_tenure_years {
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%234f46e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3E%3C/svg%3E") !important;
+    }
+}
+
+/* Edge/IE specific fixes */
+#preferred_tenure_years::-ms-expand {
+    display: none !important;
+}/
+* Enhanced Option Styling for Better Visibility */
+select.form-input option,
+#preferred_tenure_years option {
+    background: white !important;
+    color: var(--text-primary) !important;
+    padding: 12px 16px !important;
+    font-weight: 500 !important;
+    font-size: 1rem !important;
+    border: none !important;
+    min-height: 40px !important;
+    line-height: 1.4 !important;
+}
+
+select.form-input option:hover,
+#preferred_tenure_years option:hover {
+    background: rgba(79, 70, 229, 0.1) !important;
+    color: var(--primary-color) !important;
+}
+
+select.form-input option:checked,
+select.form-input option:selected,
+#preferred_tenure_years option:checked,
+#preferred_tenure_years option:selected {
+    background: var(--primary-color) !important;
+    color: white !important;
+    font-weight: 600 !important;
+}
+
+/* Ensure dropdown is properly sized */
+select.form-input,
+#preferred_tenure_years {
+    min-height: 56px !important;
+    line-height: 1.4 !important;
+}
+
+/* Fix for Windows Chrome dropdown styling */
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: .001dpcm) {
+    select.form-input,
+    #preferred_tenure_years {
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%234f46e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3E%3C/svg%3E") !important;
+        background-position: right 1rem center !important;
+        background-repeat: no-repeat !important;
+        background-size: 1.2em !important;
+    }
+}/* 
+Final Tenure Dropdown Fixes - Defensive Styling */
+select[name="preferred_tenure_years"],
+#preferred_tenure_years {
+    /* Force consistent styling across all browsers */
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    
+    /* Ensure proper display */
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 56px !important;
+    
+    /* Typography */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+    color: var(--text-primary) !important;
+    
+    /* Background and borders */
+    background-color: white !important;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%234f46e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3E%3C/svg%3E") !important;
+    background-position: right 1rem center !important;
+    background-repeat: no-repeat !important;
+    background-size: 1.2em !important;
+    border: 2px solid var(--border-color) !important;
+    border-radius: var(--border-radius) !important;
+    
+    /* Spacing */
+    padding: 1rem 3rem 1rem 1.25rem !important;
+    margin: 0 !important;
+    
+    /* Interaction */
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: var(--shadow-sm) !important;
+    
+    /* Z-index for dropdown */
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Hover and focus states */
+select[name="preferred_tenure_years"]:hover,
+#preferred_tenure_years:hover {
+    border-color: var(--primary-light) !important;
+    box-shadow: var(--shadow-md) !important;
+    transform: translateY(-1px) !important;
+}
+
+select[name="preferred_tenure_years"]:focus,
+#preferred_tenure_years:focus {
+    outline: none !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15), var(--shadow-md) !important;
+    transform: translateY(-1px) !important;
+    z-index: 1000 !important;
+}
+
+/* Option styling for all browsers */
+select[name="preferred_tenure_years"] option,
+#preferred_tenure_years option {
+    background: white !important;
+    color: var(--text-primary) !important;
+    padding: 12px 16px !important;
+    font-weight: 500 !important;
+    font-size: 1rem !important;
+    line-height: 1.4 !important;
+    border: none !important;
+    min-height: 40px !important;
+}
+
+/* Remove any conflicting styles */
+select[name="preferred_tenure_years"]::-ms-expand,
+#preferred_tenure_years::-ms-expand {
+    display: none !important;
+}
+
+/* Ensure dropdown arrow is always visible */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    select[name="preferred_tenure_years"],
+    #preferred_tenure_years {
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%234f46e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3E%3C/svg%3E") !important;
+    }
+}
+
+/* Firefox specific */
+@-moz-document url-prefix() {
+    select[name="preferred_tenure_years"],
+    #preferred_tenure_years {
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%234f46e5' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3E%3C/svg%3E") !important;
+        text-indent: 0.01px !important;
+        text-overflow: '' !important;
+    }
+}
