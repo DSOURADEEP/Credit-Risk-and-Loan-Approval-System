@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "app/main.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "app/main.py"
+    }
+  ],
+  "env": {
+    "ENVIRONMENT": "production",
+    "MIN_SALARY": "30000",
+    "MIN_CREDIT_SCORE": "600",
+    "MAX_DEBT_TO_INCOME_RATIO": "0.4",
+    "LOW_RISK_THRESHOLD": "0.8",
+    "HIGH_RISK_THRESHOLD": "0.4"
+  }
+}
