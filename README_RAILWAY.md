@@ -43,7 +43,7 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000
 
 - **Backend**: FastAPI (Python)
 - **Database**: SQLite (auto-configured)
-- **ML Models**: Scikit-learn (Random Forest, Gradient Boosting, SVM)
+- **Assessment**: Rule-based loan decision engine
 - **Frontend**: Modern HTML5/CSS3/JavaScript
 - **Deployment**: Railway (Docker-based)
 

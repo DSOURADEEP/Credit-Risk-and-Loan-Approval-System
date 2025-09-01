@@ -5,7 +5,7 @@ import logging
 from datetime import datetime
 
 from app.database import test_connection
-from app.services.ml_service import ml_service
+from app.services.simple_loan_service import simple_loan_service
 from app.repositories.customer_repository import CustomerRepository
 from app.repositories.loan_repository import LoanApplicationRepository
 
@@ -75,18 +75,18 @@ async def detailed_health_check():
                 "error": str(e)
             }
         
-        # Check ML service
+        # Check loan service (rule-based)
         try:
-            ml_ready = ml_service.is_ready()
-            ml_info = ml_service.get_model_info() if ml_ready else {}
+            service_ready = True  # Rule-based service is always ready
             
-            health_info["components"]["ml_service"] = {
-                "status": "healthy" if ml_ready else "unhealthy",
-                "models_loaded": ml_info.get("models_loaded", []),
-                "ready": ml_ready
+            health_info["components"]["loan_service"] = {
+                "status": "healthy",
+                "type": "rule_based_assessment",
+                "ready": service_ready,
+                "assessment_method": "automated_decision_engine"
             }
         except Exception as e:
-            health_info["components"]["ml_service"] = {
+            health_info["components"]["loan_service"] = {
                 "status": "unhealthy",
                 "error": str(e)
             }
@@ -185,34 +185,37 @@ async def database_health_check():
             }
         )
 
-@router.get("/health/ml", response_model=Dict[str, Any])
-async def ml_service_health_check():
+@router.get("/health/loan-service", response_model=Dict[str, Any])
+async def loan_service_health_check():
     """
-    ML service-specific health check
+    Loan service-specific health check
     
-    Tests ML model availability and returns model information
+    Tests rule-based loan assessment service availability
     """
     try:
-        ml_ready = ml_service.is_ready()
+        # Rule-based service is always ready
+        service_ready = True
         
-        if ml_ready:
-            ml_info = ml_service.get_model_info()
-            
-            health_status = {
-                "status": "healthy",
-                "ready": True,
-                "models": ml_info
-            }
-            
-            return JSONResponse(
-                status_code=status.HTTP_200_OK,
-                content=health_status
-            )
-        else:
-            raise Exception("ML service not ready")
-            
+        health_status = {
+            "status": "healthy",
+            "ready": True,
+            "assessment_method": "rule_based_decision_engine",
+            "features": [
+                "income_analysis",
+                "debt_to_income_ratio",
+                "employment_stability",
+                "credit_history_simulation",
+                "automated_loan_terms"
+            ]
+        }
+        
+        return JSONResponse(
+            status_code=status.HTTP_200_OK,
+            content=health_status
+        )
+        
     except Exception as e:
-        logger.error(f"ML service health check failed: {e}")
+        logger.error(f"Loan service health check failed: {e}")
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail={

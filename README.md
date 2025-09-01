@@ -19,7 +19,7 @@ A comprehensive loan processing application that combines rule-based validation 
 ### Backend
 - **FastAPI**: Modern Python web framework
 - **MySQL**: Relational database for data persistence
-- **scikit-learn**: Machine learning models
+- **Rule Engine**: Smart loan assessment algorithm
 - **Pydantic**: Data validation and serialization
 - **SQLAlchemy**: Database ORM
 

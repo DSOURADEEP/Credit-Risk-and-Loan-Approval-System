@@ -6,7 +6,7 @@ from pydantic import ValidationError
 
 from app.models.loan_application import LoanApplicationRequest, LoanApplicationResponse
 from app.models.validation import ErrorFormatter
-from app.services.loan_service import loan_service
+from app.services.simple_loan_service import simple_loan_service
 
 logger = logging.getLogger(__name__)
 
@@ -28,7 +28,7 @@ async def apply_for_loan(request: LoanApplicationRequest):
         logger.info(f"Received loan application for {request.customer_name}")
         
         # Process the loan application
-        result = loan_service.process_loan_application(request)
+        result = simple_loan_service.process_loan_application(request)
         
         # Prepare response
         response = {
@@ -44,28 +44,9 @@ async def apply_for_loan(request: LoanApplicationRequest):
         if result.loan_terms:
             response["loan_terms"] = result.loan_terms
         
-        # Add rule engine details for transparency
-        if result.rule_engine_result:
-            response["rule_evaluation"] = {
-                "passed": result.rule_engine_result.passed,
-                "failed_rules": [
-                    {
-                        "rule": rule.rule_name,
-                        "message": rule.message,
-                        "value": rule.value,
-                        "threshold": rule.threshold
-                    } for rule in result.rule_engine_result.failed_rules
-                ]
-            }
-        
-        # Add ML prediction summary
-        if result.ml_prediction_result and 'error' not in result.ml_prediction_result:
-            response["ml_evaluation"] = {
-                "final_decision": result.ml_prediction_result.get("final_decision"),
-                "consensus": result.ml_prediction_result.get("consensus"),
-                "average_probability": result.ml_prediction_result.get("average_probability"),
-                "models_used": ["RandomForest", "LogisticRegression"]
-            }
+        # Add simplified evaluation info
+        response["evaluation_method"] = "rule_based_assessment"
+        response["assessment_type"] = "automated_decision_engine"
         
         logger.info(f"Loan application processed successfully. ID: {result.application_id}, Status: {result.status}")
         
@@ -116,7 +97,7 @@ async def get_loan_decision(application_id: int):
         logger.info(f"Retrieving loan decision for application {application_id}")
         
         # Get application decision
-        decision_info = loan_service.get_application_decision(application_id)
+        decision_info = simple_loan_service.get_application_decision(application_id)
         
         logger.info(f"Retrieved loan decision for application {application_id}")
         
@@ -167,7 +148,7 @@ async def get_application_status(application_id: int):
         logger.info(f"Retrieving application status for {application_id}")
         
         # Get full decision info
-        decision_info = loan_service.get_application_decision(application_id)
+        decision_info = simple_loan_service.get_application_decision(application_id)
         
         # Return simplified status
         status_info = {

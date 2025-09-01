@@ -3,7 +3,7 @@ from fastapi.responses import JSONResponse
 from typing import Dict, Any, List
 import logging
 
-from app.services.loan_service import loan_service
+from app.services.simple_loan_service import simple_loan_service
 from app.repositories.customer_repository import CustomerRepository
 
 logger = logging.getLogger(__name__)
@@ -21,7 +21,7 @@ async def get_customer_loan_history(customer_id: int):
         logger.info(f"Retrieving loan history for customer {customer_id}")
         
         # Get customer loan history
-        history = loan_service.get_customer_loan_history(customer_id)
+        history = simple_loan_service.get_customer_loan_history(customer_id)
         
         logger.info(f"Retrieved {len(history)} loan applications for customer {customer_id}")
         
@@ -70,7 +70,7 @@ async def get_customer_profile(customer_id: int):
             raise ValueError(f"Customer {customer_id} not found")
         
         # Get loan history for statistics
-        history = loan_service.get_customer_loan_history(customer_id)
+        history = simple_loan_service.get_customer_loan_history(customer_id)
         
         # Calculate summary statistics
         total_applications = len(history)
@@ -148,7 +148,7 @@ async def get_customer_summary(customer_id: int):
             raise ValueError(f"Customer {customer_id} not found")
         
         # Get basic loan statistics
-        history = loan_service.get_customer_loan_history(customer_id)
+        history = simple_loan_service.get_customer_loan_history(customer_id)
         
         summary = {
             "customer_id": customer.id,

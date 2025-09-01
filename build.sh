@@ -1,13 +1,14 @@
 #!/bin/bash
 
-# Build script for Render deployment
+# Simplified build script for Render deployment
 set -o errexit  # exit on error
 
 echo "Installing Python dependencies..."
 pip install --upgrade pip
 pip install -r requirements.txt
 
-echo "Setting up application..."
-python deploy_setup.py
+echo "Setting up application directories..."
+mkdir -p data models static templates
 
-echo "Build completed successfully!"
+echo "Application setup completed successfully!"
+echo "Using rule-based loan assessment system"

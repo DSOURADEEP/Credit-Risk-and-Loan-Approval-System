@@ -23,28 +23,8 @@ def setup_for_deployment():
     except Exception as e:
         print(f"⚠ Database initialization failed: {e}")
     
-    # Generate training data if not exists
-    try:
-        if not Path("data/training_data_large.csv").exists():
-            print("Generating training data...")
-            os.system("python scripts/generate_training_data.py")
-            print("✓ Training data generated")
-        else:
-            print("✓ Training data already exists")
-    except Exception as e:
-        print(f"⚠ Training data generation failed: {e}")
-    
-    # Train models if not exists
-    try:
-        models_exist = any(Path("models").glob("*.joblib"))
-        if not models_exist:
-            print("Training ML models...")
-            os.system("python scripts/train_models.py")
-            print("✓ ML models trained")
-        else:
-            print("✓ ML models already exist")
-    except Exception as e:
-        print(f"⚠ Model training failed: {e}")
+    # Skip ML model training for simplified deployment
+    print("✓ Using rule-based assessment (no ML models needed)")
     
     print("\n🚀 Application is ready for deployment!")
     print("\nNext steps:")
