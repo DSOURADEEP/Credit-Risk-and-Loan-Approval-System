@@ -1,22 +1,19 @@
 #!/bin/bash
 
-# Render deployment script - optimized for Python 3.13
+# Simplified build script for Render deployment
 set -o errexit  # exit on error
 
-echo "🚀 Starting Render deployment..."
-echo "Python version: $(python --version)"
-
-echo "📦 Installing dependencies..."
+echo "Installing Python dependencies..."
 pip install --upgrade pip
 
-# Use render-optimized requirements with pre-compiled wheels only
-pip install --only-binary=all --no-cache-dir -r requirements-render.txt
+# Install with only binary wheels to avoid compilation
+pip install --only-binary=all --no-cache-dir -r requirements.txt
 
-echo "📁 Setting up directories..."
+echo "Setting up application directories..."
 mkdir -p data models static templates
 
-echo "⚙️ Running setup..."
+echo "Running deployment setup..."
 python deploy_setup.py
 
-echo "✅ Deployment ready!"
-echo "🎯 Using rule-based loan assessment system"
+echo "Application setup completed successfully!"
+echo "Using rule-based loan assessment system"
